@@ -1,35 +1,40 @@
 \c - подключение к бд
+
 \l - показывает весь список бд
+
 \du - показывает всех пользователей
+
 \dt - показвает все таблицы внутри бд
+
 \d <название таблицы> -  более подробная инфо-я о таблице
+
 \q - выход из СУБД(quit) 
 
-ВСЕ КЛЮЧЕВЫЕ СЛОВА ДОЛЖНЫ ПИСАТЬ С БОЛЬШОЙ БУКВЫ
+## ВСЕ КЛЮЧЕВЫЕ СЛОВА ДОЛЖНЫ ПИСАТЬ С БОЛЬШОЙ БУКВЫ
 
-sudo -u postgres psql - команда для захода через юзера  postgres
+# sudo -u postgres psql - команда для захода через юзера  postgres
 
 
 
-ТИПЫ ДАННЫХ
-int:
+### ТИПЫ ДАННЫХ
+# int:
     bigint - 8 байтовое число
     integer - 4 байтове число
     smallint - 2 байтове число
     serial - авто инкрементация
 
-str:
+# str:
     char(число) - фиксированная длина ___H/W___
     varchar(число) - фиксированная длина ___H/W___
     text - без ограничений, длиная  строка
 
-date:
+# date:
     date - дата и время
     time - время
     timestamp - дата
 
 
-boolean - true|false
+# boolean - true|false
 
 
 CREATE USER <username> WITH PASSWORD 'password;
@@ -40,12 +45,12 @@ CREATE DATABASE <username> WITH OWNER <usename>;
 
 
 
-NOT NULL = не должно быть пустым
-NULL 
-PRIMERY KEY
-FORIEGN KEY
-UNIQUE
-CHECK
+# NOT NULL = не должно быть пустым
+# NULL 
+# PRIMERY KEY
+# FORIEGN KEY
+# UNIQUE
+# CHECK
 
 
 
@@ -84,7 +89,7 @@ select * from product ORDER BY price {limit 2}; - выводит по лимит
 select * from product ORDER BY id;
 
 
-LIMIT - возвращает ограниченное кол-во данных
+# LIMIT - возвращает ограниченное кол-во данных
 
 select * from product ORDER BY price {limit 5};
 
@@ -99,14 +104,16 @@ select distinct price from product;
 <!-- <,>, >=, <=, = ,!= -->
 
 # операторы
-or -
-and - 
-not -
-in - 
+or 
+and 
+not 
+in  
 
 select * from product where name = 'Iphone 14';
 
 select * from product where price >= 20000 and price <= 300000;
+
+select * from product where (24000, 300000);
 
 ### BETWEEN - ДИАПОЗОН
 
@@ -121,14 +128,7 @@ like '%@gmail.com'
 ### delete 
 delete from <название таблицы>
 
-
-
-
 регекст - 
-
-UPDATE - 
-
-select * from product where (24000, 300000);
 
 ### update
 
@@ -185,32 +185,28 @@ select name, sum(price) from product where price < 15000 group by name having na
 
 ### СВЯЗИ 
 
-one to one 
+# one to one 
 один чел - один мозг
 один ключ - один замок
 
-one to many 
+# one to many 
 один книга - много страниц
 один куратор - много студентов
 
 
-many to many
+# many to many
 много аккунтов - много репозиториии
 много учеников - много предметов
 
+PRIMARY KEY - внешний ключ (с помощью него создаются связи) 
+
+FOREIGN KEY - первичный ключ (ссыляется на PRIMARY KEY)
+
+one to one  - к id другой таблицы даем уникальность 
+
+one to many - просто ссылаяемся на id другой таблицы
+
+many to many - создаем третью таблицн, в которой ссылаемя на две связные таблицы
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### INDEXES - это спецю объекты предназначенные в основнос для ускорения доступа к данных
