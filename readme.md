@@ -165,6 +165,7 @@ elect name, price * 89 as dollars from product;
 
 
 select name, sum(price) from product group by name;
+
         name     |  sum   
     --------------+--------
     Iphone 5     |  45000
