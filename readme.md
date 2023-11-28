@@ -64,44 +64,41 @@ CREATE TABLE <название таблицы> (
 
 # Заполнeние таблицы
 
-insert into <название таблицы> (<столбец-1б>,<столбец-2>) values(<значение-1>,<значение-2>)
+    insert into <название таблицы> (<столбец-1б>,<столбец-2>) values(<значение-1>,<значение-2>)
 
-insert into product (name,price) values ('Iphone 14', 24000);
+    insert into product (name,price) values ('Iphone 14', 24000);
 
-insert into product (name,price) values ('Iphone 14', 25600),('macbook',34000), ('Iphone 5', 45000);
+    insert into product (name,price) values ('Iphone 14', 25600),('macbook',34000), ('Iphone 5', 45000);
 
-insert into product (name) values ('delete');
+    insert into product (name) values ('delete');
 
 # Сорторовка таблицы 
 
-select * from product {ORDER BY} price; - по возрастанию 
+    select * from product {ORDER BY} price; - по возрастанию 
 
-select * from product ORDER BY price {DESC}; - по убыванию
-
-
+    select * from product ORDER BY price {DESC}; - по убыванию
 
 # Вывод данных из таблицы
  
-select * from <название таблицы>
+    select * from <название таблицы>
 
-select * from product ORDER BY price {limit 2}; - выводит по лимиту (в данном случаи он выдаст только 2 строки)
+    select * from product ORDER BY price {limit 2}; - выводит по лимиту (в данном случаи он выдаст только 2 строки)
 
-select * from product ORDER BY id;
+    select * from product ORDER BY id;
 
 
 # LIMIT - возвращает ограниченное кол-во данных
 
-select * from product ORDER BY price {limit 5};
+    select * from product ORDER BY price {limit 5};
 
-select * from product order by price offset 3; проспускает первые 3 записей
+    select * from product order by price offset 3; проспускает первые 3 записей
 
+# DICTINCT - убирает дубликаты, возвращает уникальные значения 
 
-DICTINCT - убирает дубликаты, возвращает уникальные значения 
-
-select distinct price from product;
+    select distinct price from product; 
 
 # WHERE - УСЛОВИЕ - это фильтрация по каким-то критериям
-<!-- <,>, >=, <=, = ,!= -->
+    <!-- <,>, >=, <=, = ,!= --> 
 
 ## операторы
 or 
@@ -109,11 +106,11 @@ and
 not 
 in  
 
-select * from product where name = 'Iphone 14';
+    select * from product where name = 'Iphone 14';
 
-select * from product where price >= 20000 and price <= 300000;
+    select * from product where price >= 20000 and price <= 300000;
 
-select * from product where (24000, 300000);
+    select * from product where (24000, 300000);
 
 # BETWEEN - ДИАПОЗОН
 
@@ -121,92 +118,92 @@ select * from product where (24000, 300000);
 
 # iLIKE - НЕ ЧУВСТВИТЕЛЕН К РЕГИСТРУ
 
-where name like A% - имена нач. на А
+    where name like A% - имена нач. на А
 
-like '%@gmail.com'
+    like '%@gmail.com'
 
 # delete 
-delete from <название таблицы>
+    delete from <название таблицы>
 
 регекст - 
 
 # update
 
-UPDATE product set name = <новое значение>;
+    UPDATE product set name = <новое значение>;
 
-UPDATE product set name = <новое значение> where id = 3;
+    UPDATE product set name = <новое значение> where id = 3;
 
 # Оператор AS ALIAS
 
 elect name, price * 89 as dollars from product;
 
-     name     | dollars  
---------------+----------
- Iphone 14    |  2136000
- macbook      | 26700000
- Iphone 14    |  2278400
- macbook      |  3026000
- Iphone 5     |  4005000
- Redmi note 9 |  1335000
-(6 rows)
+    name     | dollars  
+    --------------+----------
+    Iphone 14    |  2136000
+    macbook      | 26700000
+    Iphone 14    |  2278400
+    macbook      |  3026000
+    Iphone 5     |  4005000
+    Redmi note 9 |  1335000
+    (6 rows)
 
 # GROUP BY -  это ключевое слово, которое позволяет выводить значение из колононок обьеденные в группы
 
 
-select * from product;
- id |     name     | price  
-----+--------------+--------
-  1 | Iphone 14    |  24000
-  3 | macbook      | 300000
-  5 | Iphone 14    |  25600
-  6 | macbook      |  34000
-  7 | Iphone 5     |  45000
-  2 | Redmi note 9 |  15000
-  8 | Nokia 5      | 230000
-(7 rows)
+    select * from product;
+    id |     name     | price  
+    ----+--------------+--------
+    1 | Iphone 14    |  24000
+    3 | macbook      | 300000
+    5 | Iphone 14    |  25600
+    6 | macbook      |  34000
+    7 | Iphone 5     |  45000
+    2 | Redmi note 9 |  15000
+    8 | Nokia 5      | 230000
+    (7 rows)
 
 
 
 select name, sum(price) from product group by name;
-     name     |  sum   
---------------+--------
- Iphone 5     |  45000
- Redmi note 9 |  15000
- Nokia 5      | 230000
- Iphone 14    |  49600
- macbook      | 334000
-(5 rows)
+        name     |  sum   
+    --------------+--------
+    Iphone 5     |  45000
+    Redmi note 9 |  15000
+    Nokia 5      | 230000
+    Iphone 14    |  49600
+    macbook      | 334000
+    (5 rows)
 
 # HAVING - точно такое же условие как WHERE но всегда используется с GOURP BY, выводить рез. условия  группю
 
-#WHERE - выводит рез. условия для строк.
+# WHERE - выводит рез. условия для строк.
 
-select name, sum(price) from product where price < 15000 group by name having name = 'Iphone 14';
+    select name, sum(price) from product where price < 15000 group by name having name = 'Iphone 14';
 
 # СВЯЗИ 
 
 ## one to one 
-один чел - один мозг
-один ключ - один замок
+    один чел - один мозг
+    один ключ - один замок
 
 ## one to many 
-один книга - много страниц
-один куратор - много студентов
+    один книга - много страниц
+    один куратор - много студентов
 
 
 ## many to many
-много аккунтов - много репозиториии
-много учеников - много предметов
+    много аккунтов - много репозиториии
+    много учеников - много предметов
 
-PRIMARY KEY - внешний ключ (с помощью него создаются связи) 
+    PRIMARY KEY - внешний ключ (с помощью него создаются связи) 
 
-FOREIGN KEY - первичный ключ (ссыляется на PRIMARY KEY)
+    FOREIGN KEY - первичный ключ (ссыляется на PRIMARY KEY)
 
-one to one  - к id другой таблицы даем уникальность 
+    one to one  - к id другой таблицы даем уникальность 
 
-one to many - просто ссылаяемся на id другой таблицы
+    one to many - просто ссылаяемся на id другой таблицы
 
-many to many - создаем третью таблицн, в которой ссылаемя на две связные таблицы
+    many to many - создаем третью таблицн, в которой ссылаемя на две связные таблицы
 
 
 # INDEXES - это спецю объекты предназначенные в основнос для ускорения доступа к данных
