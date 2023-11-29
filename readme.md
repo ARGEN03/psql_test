@@ -237,21 +237,84 @@ select name, sum(price) from product group by name;
 
     Достает только те записи у которых есть связ
 
+    select cat.name, shelter.title from cat join shelter on cat.id = shelter.cat_id;
+
+    вывод:
+
+        name    |  title   
+    -------------+----------
+    barsik      | shelter1
+    white tiger | shelter2
+    (2 rows)
+
+
 ### LEFT JOIN:
 
     Достает все записи с левой таблицы и соединает с правой таблицей
+
+    select cat.name, shelter.title from cat left join shelter on cat.id = shelter.cat_id;
+
+    вывод:
+
+        name    |  title   
+    -------------+----------
+    barsik      | shelter1
+    white tiger | shelter2
+    cat in boot | 
+    noname      | 
+    lucifer     | 
+    kiska       | 
+
 
 ### RIGTH JOIN:
 
     Достает все записи с правиой таблицы и соединает с левой таблицей
 
-### FULL JOIN:
+    select cat.name, shelter.title from cat right join shelter on cat.id = shelter.cat_id;
+
+
+    вывод:
+
+        name    |  title   
+    -------------+----------
+    barsik      | shelter1
+    white tiger | shelter2
+                | shelter3
+                | shelter4
+
+### FULL outer JOIN:
 
     Достает все записи с обеих таблиц
+    
+
+    вывод:
+
+        name    |  title   
+    -------------+----------
+    barsik      | shelter1
+    white tiger | shelter2
+                | shelter3
+                | shelter4
+    cat in boot | 
+    noname      | 
+    lucifer     | 
+    kiska       | 
 
 ### SELF JOIN:
 
-    
+# import / export database
+
+## import:
+
+    psql -U <username> -d <name_db> -f <name_file>
+
+### <name_db> должен существовать в postgrsql
+
+## export:
+
+    pg_dump <name_db> >> к файлу
+    pg_dump -U <username> <name_db> >> абсол. путь к файлу
+
 
 
 
