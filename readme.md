@@ -53,13 +53,23 @@ CREATE DATABASE <username> WITH OWNER <usename>;
 ### CHECK
 
 
+# Создание базы данных
 
-CREATE DATABASE <название бд>;
+     DATABASE <название бд>;
 
-CREATE TABLE <название таблицы> (
-    column {varchar}-тип  NOT NULL
+# Удаление базы данных
+
+    ATABASE <название бд>;
+
+# Создание таблицы
+
+    CREATE TABLE <название таблицы> (
+        column {varchar}-тип  NOT NULL
 );
 
+# Удаление таблицы
+
+    DROP TABLE <название таблицы>;
 
 
 # Заполнeние таблицы
@@ -116,7 +126,7 @@ in
 
 # LIKE - ВЫВОДИТ РЕЗУЛЬТАТ КОТОРЫЙ ПОДХОДИТ ВВЕДНЕННОМУ ШАБЛОНУ(ЧУВСТВИТЕЛЕН К РЕГИСТРУ)
 
-# iLIKE - НЕ ЧУВСТВИТЕЛЕН К РЕГИСТРУ
+# iLIKE - НЕ ЧУВСТВИТЕЛЕНCREATE К РЕГИСТРУ
 
     where name like A% - имена нач. на А
 
@@ -207,7 +217,7 @@ select name, sum(price) from product group by name;
 ### many to many - создаем третью таблицн, в которой ссылаемя на две связные таблицы
 
 
-# INDEXES - это спецю объекты предназначенные в основнос для ускорения доступа к данных
+# INDEXES - это спец. объекты предназначенные в основном для ускорения доступа к данных
 
 ## Типы индексов в postgres:
 ### 1) b-дерево - balanced tree
@@ -217,7 +227,31 @@ select name, sum(price) from product group by name;
 ### 5) gin
 ### 6) brin
 
-reate index book_title on book (title);
+<!-- сreate index book_title on book (title); -->
+
+# JOIN -  инструкция, которая позволяет в запросах select брать данные из нескольких таблиц
+
+## ВИДЫ JOIN:
+
+### INNER JOIN (JOIN):
+
+    Достает только те записи у которых есть связ
+
+### LEFT JOIN:
+
+    Достает все записи с левой таблицы и соединает с правой таблицей
+
+### RIGTH JOIN:
+
+    Достает все записи с правиой таблицы и соединает с левой таблицей
+
+### FULL JOIN:
+
+    Достает все записи с обеих таблиц
+
+### SELF JOIN:
+
+    
 
 
 
