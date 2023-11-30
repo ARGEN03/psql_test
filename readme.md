@@ -143,6 +143,74 @@ in
 
     UPDATE product set name = <новое значение> where id = 3;
 
+# Alter table -  используется для изменения структуры существующей таблицы.
+
+## Добавление нового столбца:
+
+    ALTER TABLE название_таблицы
+    ADD COLUMN новый_столбец тип_данных;
+
+    пример:
+
+    ALTER TABLE employees
+    ADD COLUMN email VARCHAR(100);
+
+
+## Изменение типа столбца:
+
+    ALTER TABLE название_таблицы
+    ALTER COLUMN имя_столбца TYPE новый_тип_данных;
+
+    пример:
+
+    ALTER TABLE название_таблицы
+    ALTER COLUMN имя_столбца TYPE новый_тип_данных;
+
+
+## Удаление столбца:
+
+    ALTER TABLE название_таблицы
+    DROP COLUMN имя_столбца;
+
+    пример:
+
+    ALTER TABLE customers
+    DROP COLUMN phone_number;
+
+
+## Переименование столбца:
+
+    ALTER TABLE название_таблицы
+    RENAME COLUMN старое_имя_столбца TO новое_имя_столбца;
+
+    пример:
+
+    ALTER TABLE orders
+    RENAME COLUMN order_date TO order_placed_date;
+
+## Добавление внешнего ключа:
+
+    ALTER TABLE название_таблицы
+    ADD CONSTRAINT имя_ограничения FOREIGN KEY (столбец) REFERENCES другая_таблица(столбец);
+
+    пример:
+    
+    ALTER TABLE order_items
+    ADD CONSTRAINT fk_order_item_product FOREIGN KEY (product_id) REFERENCES products(product_id);
+
+
+
+## Удаление внешнего ключа:
+
+    ALTER TABLE название_таблицы
+    DROP CONSTRAINT имя_ограничения;
+
+    пример:
+
+    ALTER TABLE order_items
+    DROP CONSTRAINT fk_order_item_product;
+
+
 # Оператор AS ALIAS
 
 elect name, price * 89 as dollars from product;
@@ -315,6 +383,32 @@ select name, sum(price) from product group by name;
     pg_dump <name_db> >> к файлу
     pg_dump -U <username> <name_db> >> абсол. путь к файлу
 
+
+# Агрегации
+
+## SUM
+
+     select c.name, sum(p.price)
+
+
+    from customer as c
+    join orders as o on c.id=o.customer_id
+    join product as p on p.id = o.product_id
+    group by c.name;
+    name    |  sum   
+    -----------+--------
+    customer1 | 339000
+    customer3 |  25600
+    (2 rows)
+
+
+## MAX
+
+## MIN 
+
+## AVG
+
+## COUNT
 
 
 
